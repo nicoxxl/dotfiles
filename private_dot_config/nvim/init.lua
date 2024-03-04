@@ -34,7 +34,16 @@ require('lazy').setup({
   {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl"
-  }
+  },
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      {
+        "j-hui/fidget.nvim",
+        opts = {},
+      },
+    }
+  },
 }, {})
 
 vim.wo.number = true
@@ -65,5 +74,11 @@ vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
 require("lualine").setup {}
 require('gitsigns').setup()
 require('ibl').setup()
+require('lspconfig').rust_analyzer.setup {
+  settings = {
+    ["rust-analyzer"] = {}
+  }
+}
+
 
 -- vim: ts=2 sts=2 sw=2 et
