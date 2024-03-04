@@ -15,10 +15,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
- {
-   'nvim-telescope/telescope.nvim',
-   dependencies = { 'nvim-lua/plenary.nvim' }
- }
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000
+  },
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' }
+  },
 }, {})
 
 vim.wo.number = true
@@ -33,6 +38,11 @@ vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
+
+require("catppuccin").setup {
+  flavour = "mocha",
+}
+vim.cmd.colorscheme "catppuccin"
 
 require('telescope').setup {}
 pcall(require('telescope').load_extension, 'fzf')
