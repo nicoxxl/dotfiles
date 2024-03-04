@@ -28,6 +28,9 @@ require('lazy').setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+  {
+    'lewis6991/gitsigns.nvim'
+  },
 }, {})
 
 vim.wo.number = true
@@ -56,6 +59,7 @@ vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { d
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
 
 require("lualine").setup {}
+require('gitsigns').setup()
 
 
 -- vim: ts=2 sts=2 sw=2 et
