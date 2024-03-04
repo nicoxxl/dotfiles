@@ -31,6 +31,10 @@ require('lazy').setup({
   {
     'lewis6991/gitsigns.nvim'
   },
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl"
+  }
 }, {})
 
 vim.wo.number = true
@@ -60,6 +64,6 @@ vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
 
 require("lualine").setup {}
 require('gitsigns').setup()
-
+require('ibl').setup()
 
 -- vim: ts=2 sts=2 sw=2 et
