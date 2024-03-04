@@ -24,6 +24,10 @@ require('lazy').setup({
     'nvim-telescope/telescope.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' }
   },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
 }, {})
 
 vim.wo.number = true
@@ -50,6 +54,8 @@ pcall(require('telescope').load_extension, 'fzf')
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
+
+require("lualine").setup {}
 
 
 -- vim: ts=2 sts=2 sw=2 et
