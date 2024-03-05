@@ -44,6 +44,14 @@ require('lazy').setup({
       },
     }
   },
+  {
+    'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    version = '^1.0.0',
+  },
 }, {})
 
 vim.wo.number = true
@@ -79,6 +87,7 @@ require('lspconfig').rust_analyzer.setup {
     ["rust-analyzer"] = {}
   }
 }
+require('barbar').setup()
 
 
 -- vim: ts=2 sts=2 sw=2 et
