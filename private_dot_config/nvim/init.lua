@@ -84,12 +84,6 @@ vim.cmd.colorscheme "catppuccin"
 require('telescope').setup {}
 pcall(require('telescope').load_extension, 'fzf')
 
--- Telescope
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
--- NeoTree
-vim.keymap.set('n', '<C-b>', function() require("neo-tree.command").execute({ toggle = true }) end)
 
 require("lualine").setup {}
 require('gitsigns').setup()
@@ -101,5 +95,16 @@ require('lspconfig').rust_analyzer.setup {
 }
 require('barbar').setup()
 
+-- Telescope
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
+-- NeoTree
+vim.keymap.set('n', '<C-b>', function() require("neo-tree.command").execute({ toggle = true }) end)
+-- Barbar
+vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>')
+vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>')
+vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>')
+vim.keymap.set('n', '<C-S-L>', '<Cmd>BufferMoveNext<CR>')
 
 -- vim: ts=2 sts=2 sw=2 et
