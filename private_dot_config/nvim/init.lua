@@ -52,6 +52,15 @@ require('lazy').setup({
     },
     version = '^1.0.0',
   },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    branch = 'v3.x',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-web-devicons',
+      'MunifTanjim/nui.nvim',
+    },
+  },
 }, {})
 
 vim.wo.number = true
@@ -75,9 +84,12 @@ vim.cmd.colorscheme "catppuccin"
 require('telescope').setup {}
 pcall(require('telescope').load_extension, 'fzf')
 
+-- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
+-- NeoTree
+vim.keymap.set('n', '<C-b>', function() require("neo-tree.command").execute({ toggle = true }) end)
 
 require("lualine").setup {}
 require('gitsigns').setup()
