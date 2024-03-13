@@ -106,5 +106,19 @@ vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>')
 vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>')
 vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>')
 vim.keymap.set('n', '<C-S-L>', '<Cmd>BufferMoveNext<CR>')
+-- LSP
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
+    vim.keymap.set({ 'n', 'v' }, 'F', vim.lsp.buf.code_action, opts)
+    vim.keymap.set('n', '<leader>f', function()
+      vim.lsp.buf.format { async = true }
+    end, opts)
+  end
+})
 
 -- vim: ts=2 sts=2 sw=2 et
