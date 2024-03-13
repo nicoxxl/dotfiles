@@ -29,6 +29,15 @@ require('lazy').setup({
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
   {
+    'utilyre/barbecue.nvim',
+    name = 'barbecue',
+    version = '*',
+    dependencies = {
+      'SmiteshP/nvim-navic',
+      'nvim-tree/nvim-web-devicons',
+    },
+  },
+  {
     'lewis6991/gitsigns.nvim'
   },
   {
@@ -86,6 +95,7 @@ pcall(require('telescope').load_extension, 'fzf')
 
 
 require("lualine").setup {}
+require('barbecue').setup {}
 require('gitsigns').setup()
 require('ibl').setup()
 require('lspconfig').rust_analyzer.setup {
