@@ -13,64 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
   }
 end
 vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup({
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000
-  },
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' }
-  },
-  {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
-  },
-  {
-    'utilyre/barbecue.nvim',
-    name = 'barbecue',
-    version = '*',
-    dependencies = {
-      'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
-  {
-    'lewis6991/gitsigns.nvim'
-  },
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl"
-  },
-  {
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      {
-        "j-hui/fidget.nvim",
-        opts = {},
-      },
-    }
-  },
-  {
-    'romgrk/barbar.nvim',
-    dependencies = {
-      'lewis6991/gitsigns.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    version = '^1.0.0',
-  },
-  {
-    'nvim-neo-tree/neo-tree.nvim',
-    branch = 'v3.x',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-web-devicons',
-      'MunifTanjim/nui.nvim',
-    },
-  },
-}, {})
+require('lazy').setup('plugins')
 
 vim.wo.number = true
 vim.o.mouse = 'a'
@@ -85,37 +28,7 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
-require("catppuccin").setup {
-  flavour = "mocha",
-}
 vim.cmd.colorscheme "catppuccin"
-
-require('telescope').setup {}
-pcall(require('telescope').load_extension, 'fzf')
-
-
-require("lualine").setup {}
-require('barbecue').setup {}
-require('gitsigns').setup()
-require('ibl').setup()
-require('lspconfig').rust_analyzer.setup {
-  settings = {
-    ["rust-analyzer"] = {}
-  }
-}
-require('barbar').setup()
-require('neo-tree').setup {
-  close_if_last_window = true,
-  window = {
-    width = 30,
-  },
-  buffers = {
-    follow_current_file = { enabled = true },
-  },
-  filesystem = {
-    follow_current_file = { enabled = true },
-  },
-}
 
 -- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
@@ -123,7 +36,7 @@ vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { d
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
 -- NeoTree
 vim.keymap.set('n', '<C-b>', function()
-  require("neo-tree.command").execute({
+  require('neo-tree.command').execute({
     toggle = true,
     position = 'left',
   })
