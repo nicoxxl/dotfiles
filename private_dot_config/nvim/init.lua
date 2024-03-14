@@ -104,13 +104,30 @@ require('lspconfig').rust_analyzer.setup {
   }
 }
 require('barbar').setup()
+require('neo-tree').setup {
+  close_if_last_window = true,
+  window = {
+    width = 30,
+  },
+  buffers = {
+    follow_current_file = { enabled = true },
+  },
+  filesystem = {
+    follow_current_file = { enabled = true },
+  },
+}
 
 -- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
 -- NeoTree
-vim.keymap.set('n', '<C-b>', function() require("neo-tree.command").execute({ toggle = true }) end)
+vim.keymap.set('n', '<C-b>', function()
+  require("neo-tree.command").execute({
+    toggle = true,
+    position = 'left',
+  })
+end)
 -- Barbar
 vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>')
 vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>')
