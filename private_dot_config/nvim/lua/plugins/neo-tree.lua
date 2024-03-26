@@ -10,13 +10,19 @@ return {
     opts = {
       close_if_last_window = true,
       window = {
-        width = 30,
+        width = 60,
+        position = 'float',
       },
       buffers = {
         follow_current_file = { enabled = true },
       },
       filesystem = {
         follow_current_file = { enabled = true },
+      },
+      default_component_configs = {
+        indent = {
+          last_indent_marker = '╰',
+        },
       },
     }
   }

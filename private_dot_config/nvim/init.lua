@@ -38,7 +38,7 @@ vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
 vim.keymap.set('n', '<C-b>', function()
   require('neo-tree.command').execute({
     toggle = true,
-    position = 'left',
+    position = 'float',
   })
 end)
 -- Barbar
