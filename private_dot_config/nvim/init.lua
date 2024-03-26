@@ -60,5 +60,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end
 })
+vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+  group = vim.api.nvim_create_augroup("float_diagnostic", { clear = true }),
+  callback = function ()
+    vim.diagnostic.open_float(nil, {focus=false})
+  end
+})
 
 -- vim: ts=2 sts=2 sw=2 et
