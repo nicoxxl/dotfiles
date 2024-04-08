@@ -2,3 +2,8 @@
 action = "SpawnNewInstance"
 key = "Return"
 mods = "Control|Shift"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+mods = "Control"
