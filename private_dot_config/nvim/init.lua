@@ -40,6 +40,7 @@ vim.keymap.set('n', '<C-b>', function()
   require('neo-tree.command').execute({
     toggle = true,
     position = 'float',
+    reveal = true,
   })
 end)
 -- Barbar
