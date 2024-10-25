@@ -34,6 +34,7 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.hlsearch = true
 vim.o.cursorline = true
+vim.o.undofile = true
 
 vim.cmd.colorscheme "catppuccin"
 
