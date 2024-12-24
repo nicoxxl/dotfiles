@@ -35,6 +35,7 @@ vim.o.autoindent = true
 vim.o.hlsearch = true
 vim.o.cursorline = true
 vim.o.undofile = true
+vim.o.scrolloff = 10
 
 vim.cmd.colorscheme "catppuccin"
 
