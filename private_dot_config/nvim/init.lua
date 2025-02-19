@@ -41,8 +41,16 @@ vim.cmd.colorscheme "catppuccin"
 
 -- Telescope
 vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set(
+  'n',
+  '<leader><space>',
+  function()
+    require('telescope.builtin').buffers({ sort_lastused = true, sort_mru = true })
+  end,
+  { desc = '[ ] Find existing buffers' }
+)
 vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
+vim.keymap.set('n', '<C-m>', require('telescope.builtin').live_grep)
 -- NeoTree
 vim.keymap.set('n', '<C-b>', function()
   require('neo-tree.command').execute({
