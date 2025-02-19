@@ -9,6 +9,7 @@ return {
         gitsigns = true,
         neotree = true,
         telescope = true,
+        treesitter = true,
       }
     }
   },
