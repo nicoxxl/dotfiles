@@ -1,5 +1,7 @@
 [window]
 dynamic_padding = true
+decorations = "None"
+opacity = 0.95
 
 [[keyboard.bindings]]
 action = "SpawnNewInstance"
