@@ -40,7 +40,6 @@ vim.o.scrolloff = 10
 vim.cmd.colorscheme "catppuccin"
 
 -- Telescope
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set(
   'n',
   '<leader><space>',
@@ -49,8 +48,8 @@ vim.keymap.set(
   end,
   { desc = '[ ] Find existing buffers' }
 )
-vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files)
-vim.keymap.set('n', '<C-m>', require('telescope.builtin').live_grep)
+vim.keymap.set('n', '<C-p>', require('telescope.builtin').find_files, { desc = '    Find files' })
+vim.keymap.set('n', '<C-m>', require('telescope.builtin').live_grep, { desc = '    Live grep' })
 -- NeoTree
 vim.keymap.set('n', '<C-b>', function()
   require('neo-tree.command').execute({
@@ -62,8 +61,8 @@ end)
 -- Barbar
 vim.keymap.set('n', '<C-h>', '<Cmd>BufferPrevious<CR>')
 vim.keymap.set('n', '<C-l>', '<Cmd>BufferNext<CR>')
-vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>')
-vim.keymap.set('n', '<C-S-L>', '<Cmd>BufferMoveNext<CR>')
+-- vim.keymap.set('n', '<C-S-H>', '<Cmd>BufferMovePrevious<CR>')
+-- vim.keymap.set('n', '<C-S-L>', '<Cmd>BufferMoveNext<CR>')
 -- LSP
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
@@ -74,7 +73,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set({ 'n', 'v' }, 'F', vim.lsp.buf.code_action, opts)
     vim.keymap.set('n', '<leader>r', vim.lsp.buf.rename)
-    vim.keymap.set('n', '<leader>f', function()
+    vim.keymap.set('n', '<C-i>', function()
       vim.lsp.buf.format { async = true }
     end, opts)
   end
